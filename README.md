@@ -11,12 +11,10 @@ It sends fake ice and weather data to Azure, processes it in real time, and show
 
 ## Student Information
 
-- Name: ( )
-- Student ID: ( )
-
-- Main documentation repo: ( )
-- Sensor simulation repo: ( )
-- Web dashboard repo: ( )
+- Name: Obaida Kandakji
+- Student ID: 041272028
+- Sensor simulation repo: https://github.com/ObaidaKandakji/rideau-canal-sensor-simulation 
+- Web dashboard repo: https://github.com/ObaidaKandakji/rideau-canal-dashboard
 
 ---
 
@@ -93,7 +91,7 @@ It shows the full pipeline from the sensor simulator to the dashboard.
 
 ### IoT Sensor Simulation (Python)
 
-- Repository: ( )  
+- Repository: https://github.com/ObaidaKandakji/rideau-canal-sensor-simulation 
 - Simulates three devices: `dows-lake-device`, `fifth-avenue-device`, `nac-device`  
 - Sends JSON messages every 10 seconds to IoT Hub  
 - Uses `azure-iot-device` and environment variables in `.env`  
@@ -139,7 +137,7 @@ It shows the full pipeline from the sensor simulator to the dashboard.
 
 ### Web Dashboard (Node.js)
 
-- Repository: ( )  
+- Repository: https://github.com/ObaidaKandakji/rideau-canal-dashboard
 - Backend: `server.js` (Express + `@azure/cosmos`)  
 - Frontend: `public/index.html`, `public/styles.css`, `public/app.js`  
 - Features:
@@ -150,7 +148,7 @@ It shows the full pipeline from the sensor simulator to the dashboard.
 
 ### Azure App Service Deployment
 
-- Web App name: ( )  
+- Web App name: CST8916Final  
 - Runtime stack: Node.js  
 - Connected to GitHub repo for automatic deployments  
 - App settings include:
@@ -163,16 +161,15 @@ It shows the full pipeline from the sensor simulator to the dashboard.
 
 ## Repository Links
 
-- Main documentation repo (this one): ( )  
-- Sensor simulation repo: ( )  
-- Web dashboard repo: ( )  
-- Live dashboard URL: ( )  
+- Sensor simulation repo: https://github.com/ObaidaKandakji/rideau-canal-sensor-simulation 
+- Web dashboard repo: https://github.com/ObaidaKandakji/rideau-canal-dashboard 
+- Live dashboard URL: https://cst8916final-f9d7akcqbebqbcam.canadacentral-01.azurewebsites.net/ 
 
 ---
 
 ## Video Demonstration
 
-- Video link: ( )
+- Video link: https://youtu.be/nwy0x4Udghk
 
 The video shows:
 
@@ -196,9 +193,9 @@ The video shows:
 ### High-Level Setup Steps
 
 1. **Clone all three repositories**
-   - Main documentation: ( )  
-   - Sensor simulation: ( )  
-   - Web dashboard: ( )  
+   - Main documentation: https://github.com/ObaidaKandakji/cst8916-final-project
+   - Sensor simulation: https://github.com/ObaidaKandakji/rideau-canal-sensor-simulation
+   - Web dashboard: https://github.com/ObaidaKandakji/rideau-canal-dashboard
 
 2. **Set up Azure resources**
    - Create IoT Hub and register three devices  
@@ -255,24 +252,47 @@ Screenshots are stored in the `screenshots/` folder, such as:
 
 ## Challenges and Solutions
 
-### 1. Connecting all Azure services together
-
-**Challenge:** Getting IoT Hub, Stream Analytics, Cosmos DB, Blob Storage, and App Service to all talk to each other correctly.  
-**Solution:** Followed the order step-by-step, double-checked connection strings, and used the Azure Portal to test each part before moving on.
-
-### 2. Matching field names between services
+### 1. Matching field names between services
 
 **Challenge:** The field names coming from Stream Analytics had to match what the dashboard code expected.  
 **Solution:** Standardized field names like `windowEnd`, `avgIceThickness`, and `safetyStatus` in both the query and the Node.js code.
 
-### 3. Environment variables and secrets
-
-**Challenge:** The app broke when environment variables were missing or wrong.  
-**Solution:** Used `.env` files locally, App Service configuration in Azure, and a `/health` endpoint to quickly check if Cosmos was configured.
-
-### 4. Debugging why the dashboard was empty
-
-**Challenge:** Sometimes the dashboard showed no data even though the simulator was running.  
-**Solution:** Checked `/health`, `/api/latest`, and `/api/history/...` directly in the browser, and confirmed that Stream Analytics was actually writing documents into Cosmos.
 
 ---
+
+### AI Tools Disclosure
+- Chatgpt used to write and format readme for the repos. Used to help bugfix broken query and python code.
+
+---
+
+### Libraries Used
+
+#### Python sensor simulator
+
+- azure-iot-device – Azure IoT Device SDK for sending messages to IoT Hub
+
+- python-dotenv – load environment variables from a .env file
+
+- Python standard library modules:
+
+- os, time, json, random, datetime
+
+#### Node.js web dashboard (backend)
+
+- express – HTTP server and routing
+
+- @azure/cosmos – SDK for talking to Azure Cosmos DB
+
+- cors – enable CORS for the API
+
+- dotenv – load environment variables in Node
+
+- path – Node core module for file paths
+
+#### Frontend
+
+- Chart.js – charting library loaded from a CDN
+
+- Browser built-ins:
+
+- fetch API, vanilla JS, HTML, CSS
